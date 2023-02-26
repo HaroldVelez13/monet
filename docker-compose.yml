@@ -1,6 +1,16 @@
 version: "3.9"
  
 services:
+  db:
+    image: postgres:14
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=monet_db
+      - POSTGRES_USER=monet_admin
+      - POSTGRES_PASSWORD=monet_secret
+    ports:
+      - "5432:5432"
   app:
     build:
         context: .
@@ -8,5 +18,13 @@ services:
       - "8000:8000"
     volumes:
       - ./app:/app
-    command: >
-      sh -c "python3 manage.py runserver 0.0.0.0:8000"
+      - ./docker-entrypoint.sh:/app/docker-entrypoint.sh
+    command: python manage.py runserver 0.0.0.0:8000
+    environment:
+      - PYTHONUNBUFFERED=1
+      - POSTGRES_NAME=monet_db
+      - POSTGRES_USER=monet_admin
+      - POSTGRES_PASSWORD=monet_secret
+      - POSTGRES_HOST=db
+    depends_on:
+      - db
