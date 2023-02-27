@@ -8,7 +8,6 @@ user_name = 'testing_login'
 psw = 'admin123'
 
 class LoginStudentViewTestCase(TestCase):
-    access_token = ''
     def setUp(self):
         user = Student(
             name=user_name,
@@ -30,5 +29,3 @@ class LoginStudentViewTestCase(TestCase):
         self.assertIn('token', result)
         self.assertIn('message', result)
         self.assertIn('user', result)
-        self.access_token = result['token']['access']
-        self.user = result['user']
