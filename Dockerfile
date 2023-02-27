@@ -16,4 +16,3 @@ COPY ./app /app
 RUN adduser -D user
 USER user
 
-ENTRYPOINT ["sh", "/app/docker-entrypoint.sh"]

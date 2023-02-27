@@ -1,0 +1,54 @@
+[
+    {
+        "model": "api.test",
+        "pk": 1,
+        "fields": {
+            "description": "First Test"
+        }
+    },
+    {
+        "model": "api.question",
+        "pk": 1,
+        "fields": {
+            "test": 1,
+            "statement": "Question One",
+            "options": [
+                "one",
+                "two",
+                "three",
+                "four"
+            ],
+            "correct_option": 0
+        }
+    },
+    {
+        "model": "api.question",
+        "pk": 2,
+        "fields": {
+            "test": 1,
+            "statement": "Question Two",
+            "options": [
+                "one",
+                "two",
+                "three",
+                "four"
+            ],
+            "correct_option": 1
+        }
+    },
+    {
+        "model": "api.question",
+        "pk": 3,
+        "fields": {
+            "test": 1,
+            "statement": "Question Three",
+            "options": [
+                "one",
+                "two",
+                "three",
+                "four"
+            ],
+            "correct_option": 2
+        }
+    }
+]

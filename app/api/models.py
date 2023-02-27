@@ -10,7 +10,7 @@ class User(AbstractUser):
 
 
 class Student(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True, blank=True)
     name = models.CharField(max_length=150)
     password = models.CharField(max_length=150)
 

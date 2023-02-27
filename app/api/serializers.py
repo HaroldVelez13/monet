@@ -6,7 +6,7 @@ from api.models import (Student, Test, Question, Answer)
 class StudentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Student
-        fields = ['id','name']
+        fields = ['name']
 
 
 

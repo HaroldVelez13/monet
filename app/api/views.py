@@ -44,7 +44,7 @@ class AnswerView(viewsets.ModelViewSet):
         return Answer.objects.filter(student=student)
     
     def create(self, request, **kwargs):
-        data = request.data
+        data = request.data.copy()
         data['student'] = request.user.student
         serializer = AnswerSerializer(data=data)
         if serializer.is_valid():
