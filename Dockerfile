@@ -4,7 +4,6 @@ RUN apk update \
     && apk add postgresql-dev gcc python3-dev musl-dev
 
 COPY ./requirements.txt /requirements.txt
-COPY ./docker-entrypoint.sh /app/docker-entrypoint.sh
 
 RUN pip3 install --upgrade pip --no-cache-dir \
     && pip install psycopg2\ 
@@ -13,6 +12,7 @@ RUN pip3 install --upgrade pip --no-cache-dir \
 
 WORKDIR /app
 COPY ./app /app
+COPY ./docker-entrypoint.sh /app/docker-entrypoint.sh
 RUN adduser -D user
 USER user
 
