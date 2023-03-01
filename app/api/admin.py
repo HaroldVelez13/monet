@@ -1,35 +1,36 @@
 from django.contrib import admin
 from api.models import (Student, Teacher, Test, Question, Answer, User)
+from api.commons import TeacherAdminSite, AnswerAdminSite
+
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    def get_list_display(self, request):
-        return [field.name for field in self.model._meta.concrete_fields]
+    pass
 
 @admin.register(Student)
-class StudentAdmin(admin.ModelAdmin):
+class StudentAdmin(TeacherAdminSite):
     readonly_fields = ['user']
     def get_list_display(self, request):
-        return ['name',]
+        return ['name',] 
 
 @admin.register(Teacher)
-class TeacherAdmin(admin.ModelAdmin):
+class TeacherAdmin(TeacherAdminSite):
     readonly_fields = ['user']
     def get_list_display(self, request):
-        return ['name',]
+        return ['name',]    
 
 @admin.register(Test)
-class TestAdmin(admin.ModelAdmin):
-    def get_list_display(self, request):
-        return [field.name for field in self.model._meta.concrete_fields]
+class TestAdmin(TeacherAdminSite):
+    pass
 
 @admin.register(Question)
-class QuestionAdmin(admin.ModelAdmin):
-    def get_list_display(self, request):
-        return [field.name for field in self.model._meta.concrete_fields]
+class QuestionAdmin(TeacherAdminSite):
+    pass
 
 @admin.register(Answer)
-class AnswerAdmin(admin.ModelAdmin):
-    def get_list_display(self, request):
-        return [field.name for field in self.model._meta.concrete_fields]
+class AnswerAdmin(AnswerAdminSite):
+    pass
+
+   
+           
 
