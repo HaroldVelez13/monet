@@ -34,6 +34,9 @@ Format for create a Answer
     }
 ```
 
+Documentation of the api rest can be consulted in the url:
+`http://localhost:8000/api/doc/`
+
 ## Install.
 
 The installation is facilitated with the use of docker, to do this you must run:

@@ -24,7 +24,7 @@ class LoginStudentView(APIView):
         return Response({'message': 'Invalid Credentials'}, status=status.HTTP_401_UNAUTHORIZED)
 
 
-class TestView(generics.ListCreateAPIView):
+class TestView(generics.ListAPIView):
     queryset = Test.objects.all()
     serializer_class = TestSerializer
     permission_classes = [IsAuthenticated, ]
@@ -40,8 +40,10 @@ class AnswerView(viewsets.ModelViewSet):
     queryset = Answer.objects.all()
 
     def get_queryset(self):
-        student = self.request.user.student
-        return Answer.objects.filter(student=student)
+        if self.request.user.id :
+            student = self.request.user.student
+            return Answer.objects.filter(student=student)
+        return Response(status=status.HTTP_400_BAD_REQUEST) 
     
     def create(self, request, **kwargs):
         data = request.data.copy()
