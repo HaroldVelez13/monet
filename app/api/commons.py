@@ -48,7 +48,7 @@ class AnswerAdminSite(admin.ModelAdmin):
             return qs.filter(student=request.user.student)
         return qs
     def get_list_display(self, request):
-        return ["test","question", "selected_option"]
+        return ["test","question", "selected_option","student"]
 
     def test(self, obj):
         return obj.question.test.description
